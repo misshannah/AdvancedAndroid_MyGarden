@@ -75,6 +75,8 @@ public class PlantDetailActivity extends AppCompatActivity
         getContentResolver().update(SINGLE_PLANT_URI, contentValues, null, null);
         cursor.close();
         PlantWateringService.startActionUpdatePlantWidgets(this);
+        PlantWateringService.startActionWaterPlant(this, mPlantId);
+
     }
 
     @Override
@@ -128,6 +130,7 @@ public class PlantDetailActivity extends AppCompatActivity
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLANTS).build(), mPlantId);
         getContentResolver().delete(SINGLE_PLANT_URI, null, null);
         PlantWateringService.startActionUpdatePlantWidgets(this);
+
         finish();
     }
 }
